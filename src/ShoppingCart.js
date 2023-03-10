@@ -26,8 +26,15 @@ let ShoppingCart = () => {
           <li>Shopping Cart</li>
         </ul>
       </nav>
-      <h1>Welcome to Your Shopping Cart</h1>
-      {displayInventory()}
+      <div className="container">
+        <div className="inventory">
+          <h1>Welcome to Your Shopping Cart</h1>
+          {displayInventory()}
+        </div>
+        <div className="cart">
+          <h2>Cart Will Go Here</h2>
+        </div>
+      </div>
     </div>
   );
 };

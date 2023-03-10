@@ -4,9 +4,25 @@
   list-style: none;
   padding: 0px;
 }
+
 a {
   text-decoration: none;
 }
 .navbar > li:hover {
   cursor: pointer;
+}
+.container {
+  display: flex;
+}
+.inventory {
+  flex: 2;
+}
+.cart {
+  flex: 1;
+}
+.inventory > h1 {
+  margin-top: 22px;
+}
+.cart > h2 {
+  margin-top: 22px;
 }
