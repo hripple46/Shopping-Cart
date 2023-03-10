@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import "./ShoppingCart.css";
 let ShoppingCart = () => {
   let [items, setItems] = useState([
     { name: "Banana", qty: 0 },
@@ -18,9 +18,16 @@ let ShoppingCart = () => {
   };
   return (
     <div>
+      <nav>
+        <ul className="navbar">
+          <li>
+            <Link to="/">Home Page</Link>
+          </li>
+          <li>Shopping Cart</li>
+        </ul>
+      </nav>
       <h1>Welcome to Your Shopping Cart</h1>
       {displayInventory()}
-      <Link to="/">Home Page</Link>
     </div>
   );
 };

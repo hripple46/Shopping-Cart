@@ -1,0 +1,12 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0px;
+}
+a {
+  text-decoration: none;
+}
+.navbar > li:hover {
+  cursor: pointer;
+}
