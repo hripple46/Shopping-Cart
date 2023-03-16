@@ -11,7 +11,11 @@ let ShoppingCart = () => {
       return (
         <div key={item.name}>
           <h1>{item.name}</h1>
-          <h3>{item.qty}</h3>
+          <div className="itemCounter">
+            <button>-</button>
+            <h3>{item.qty}</h3>
+            <button>+</button>
+          </div>
         </div>
       );
     });

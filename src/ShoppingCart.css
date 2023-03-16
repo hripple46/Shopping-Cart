@@ -26,3 +26,8 @@ a {
 .cart > h2 {
   margin-top: 22px;
 }
+.itemCounter {
+  display: flex;
+  justify-content: space-around;
+  max-width: 50%;
+}
