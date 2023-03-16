@@ -12,14 +12,27 @@ let ShoppingCart = () => {
         <div key={item.name}>
           <h1>{item.name}</h1>
           <div className="itemCounter">
-            <button>-</button>
+            <button id={item.name}>-</button>
             <h3>{item.qty}</h3>
-            <button>+</button>
+            <button onClick={increment} id={item.name}>
+              +
+            </button>
           </div>
         </div>
       );
     });
   };
+  let increment = (e) => {
+    let newItems = items.map((item) => {
+      if (item.name === e.target.id) {
+        return { name: item.name, qty: item.qty + 1 };
+      } else {
+        return item;
+      }
+    });
+    setItems(newItems);
+  };
+
   return (
     <div>
       <nav>
