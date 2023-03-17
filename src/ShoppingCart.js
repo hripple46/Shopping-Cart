@@ -26,7 +26,11 @@ let ShoppingCart = () => {
 
   let displayCart = () => {
     if (cartItems.length > 0) {
-      return cartItems.map((item) => <div key={item.name}>{item.name}</div>);
+      return cartItems.map((item) => (
+        <h4 key={item.name}>
+          {item.name},{item.qty}
+        </h4>
+      ));
     }
   };
 
@@ -44,7 +48,7 @@ let ShoppingCart = () => {
               +
             </button>
             <button onClick={addToCart} id={item.name + "AddToCart"}>
-              add to cart
+              add {item.name} to cart
             </button>
           </div>
         </div>

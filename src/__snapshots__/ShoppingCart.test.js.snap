@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShoppingCart component renders correct qty in cart 1`] = `
+<div>
+  <div>
+    <nav>
+      <ul
+        class="navbar"
+      >
+        <li>
+          <a
+            href="/"
+          >
+            Home Page
+          </a>
+        </li>
+        <li>
+          Shopping Cart
+        </li>
+      </ul>
+    </nav>
+    <div
+      class="container"
+    >
+      <div
+        class="inventory"
+      >
+        <h1>
+          Welcome to Your Shopping Cart
+        </h1>
+        <div>
+          <h1>
+            Banana
+          </h1>
+          <div
+            class="itemCounter"
+          >
+            <button
+              id="BananaDec"
+            >
+              -
+            </button>
+            <h3>
+              2
+            </h3>
+            <button
+              id="Banana"
+            >
+              +
+            </button>
+            <button
+              id="BananaAddToCart"
+            >
+              add 
+              Banana
+               to cart
+            </button>
+          </div>
+        </div>
+        <div>
+          <h1>
+            Apple
+          </h1>
+          <div
+            class="itemCounter"
+          >
+            <button
+              id="AppleDec"
+            >
+              -
+            </button>
+            <h3>
+              0
+            </h3>
+            <button
+              id="Apple"
+            >
+              +
+            </button>
+            <button
+              id="AppleAddToCart"
+            >
+              add 
+              Apple
+               to cart
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="cart"
+      >
+        <h2>
+          Cart Will Go Here
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+`;
