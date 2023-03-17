@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ShoppingCart.css";
 let ShoppingCart = () => {
@@ -6,6 +6,16 @@ let ShoppingCart = () => {
     { name: "Banana", qty: 0 },
     { name: "Apple", qty: 0 },
   ]);
+
+  //the following useEffect hook is purely for testing
+  useEffect(() => {
+    let newItems = [
+      { name: "Banana", qty: 2 },
+      { name: "Apple", qty: 0 },
+    ];
+    setItems(newItems);
+  }, []);
+
   let displayInventory = () => {
     return items.map((item) => {
       return (
