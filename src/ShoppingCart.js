@@ -6,6 +6,7 @@ let ShoppingCart = () => {
     { name: "Banana", qty: 0 },
     { name: "Apple", qty: 0 },
   ]);
+  let [cartItems, setCartItems] = useState([]);
 
   //the following useEffect hook is purely for testing
   useEffect(() => {
@@ -15,6 +16,19 @@ let ShoppingCart = () => {
     ];
     setItems(newItems);
   }, []);
+
+  let addToCart = (e) => {
+    let newItem = items.find((item) => e.target.id === item.name + "AddToCart");
+    if (newItem) {
+      setCartItems([...cartItems, newItem]); // Use spread operator to create a new array
+    }
+  };
+
+  let displayCart = () => {
+    if (cartItems.length > 0) {
+      return cartItems.map((item) => <div key={item.name}>{item.name}</div>);
+    }
+  };
 
   let displayInventory = () => {
     return items.map((item) => {
@@ -28,6 +42,9 @@ let ShoppingCart = () => {
             <h3>{item.qty}</h3>
             <button onClick={increment} id={item.name}>
               +
+            </button>
+            <button onClick={addToCart} id={item.name + "AddToCart"}>
+              add to cart
             </button>
           </div>
         </div>
@@ -72,6 +89,7 @@ let ShoppingCart = () => {
         </div>
         <div className="cart">
           <h2>Cart Will Go Here</h2>
+          {displayCart()}
         </div>
       </div>
     </div>
