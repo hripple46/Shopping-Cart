@@ -6,7 +6,10 @@ let ShoppingCart = () => {
     { name: "Banana", qty: 0 },
     { name: "Apple", qty: 0 },
   ]);
-  let [cartItems, setCartItems] = useState([]);
+  let [cartItems, setCartItems] = useState([
+    { name: "Banana", qty: 0 },
+    { name: "Apple", qty: 0 },
+  ]);
 
   //the following useEffect hook is purely for testing
   useEffect(() => {
@@ -18,16 +21,26 @@ let ShoppingCart = () => {
   }, []);
 
   let addToCart = (e) => {
-    let newItem = items.find((item) => e.target.id === item.name + "AddToCart");
-    if (newItem) {
-      setCartItems([...cartItems, newItem]); // Use spread operator to create a new array
-    }
+    let targetId = e.target.id.slice(0, -"AddToCart".length); //targetID allows us to look for the matching element from both state arrays
+
+    let findItem = items.find((item) => item.name === targetId);
+    console.log(findItem);
+    let newCartItems = cartItems.map((newItem) => {
+      if (e.target.id === newItem.name + "AddToCart") {
+        //if we find the matching elements, we then set the cartItem qty to the existing qty plus whatever is carried over from the items
+        return { name: newItem.name, qty: newItem.qty + findItem.qty };
+      } else {
+        return newItem;
+      }
+    });
+    setCartItems(newCartItems); //set the state of cartItems to equal the qty that was added
+    return displayCart(); //finally, we call the function to update the 'cart' side of page to show the qty that we added
   };
 
   let displayCart = () => {
     if (cartItems.length > 0) {
       return cartItems.map((item) => (
-        <h4 key={item.name}>
+        <h4 key={item.name + "cart"}>
           {item.name},{item.qty}
         </h4>
       ));
