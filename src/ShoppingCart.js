@@ -38,13 +38,33 @@ let ShoppingCart = () => {
   };
 
   let displayCart = () => {
+    console.log(cartItems);
     if (cartItems.length > 0) {
       return cartItems.map((item) => (
-        <h4 key={item.name + "cart"}>
-          {item.name},{item.qty}
-        </h4>
+        <div key={item.name + "cart2"}>
+          <h4 key={item.name + "cart"}>
+            {item.name},{item.qty}
+          </h4>
+          <button onClick={removeFromCart} id={item.name + "RemoveFromCart"}>
+            Remove
+          </button>
+        </div>
       ));
     }
+  };
+  let removeFromCart = (e) => {
+    let targetItem = e.target.id.slice(0, -"RemoveFromCart".length);
+    console.log(targetItem);
+    let updatedCartItems = cartItems.map((cartItem) => {
+      if (targetItem === cartItem.name) {
+        return { name: cartItem.name, qty: 0 };
+      } else {
+        return cartItem;
+      }
+    });
+    console.log(updatedCartItems);
+    setCartItems(updatedCartItems);
+    return displayCart();
   };
 
   let displayInventory = () => {
