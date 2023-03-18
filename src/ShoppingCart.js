@@ -43,7 +43,7 @@ let ShoppingCart = () => {
       return cartItems.map((item) => (
         <div key={item.name + "cart2"}>
           <h4 key={item.name + "cart"}>
-            {item.name},{item.qty}
+            {item.name}s: {item.qty}
           </h4>
           <button onClick={removeFromCart} id={item.name + "RemoveFromCart"}>
             Remove
@@ -81,7 +81,7 @@ let ShoppingCart = () => {
               +
             </button>
             <button onClick={addToCart} id={item.name + "AddToCart"}>
-              add {item.name} to cart
+              Add
             </button>
           </div>
         </div>
@@ -122,7 +122,7 @@ let ShoppingCart = () => {
       <div className="container">
         <div className="inventory">
           <h1>Welcome to Your Shopping Cart</h1>
-          {displayInventory()}
+          <div className="inventoryItems">{displayInventory()}</div>
         </div>
         <div className="cart">
           <h2>Cart Will Go Here</h2>
