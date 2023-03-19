@@ -115,20 +115,44 @@ let ShoppingCart = () => {
     });
     setItems(newItems);
   };
+  let showCart = () => {
+    let cart = document.querySelector(".cart");
+    let inventory = document.querySelector(".inventory");
+    cart.style.display = "inline-block";
+    inventory.style.filter = "blur(5px)";
+  };
+  let hideCart = (e) => {
+    let cart = document.querySelector(".cart");
+    let navbarCart = document.querySelector("#navbarCart");
+    let inventory = document.querySelector(".inventory");
+
+    if (
+      e.target !== cart &&
+      !cart.contains(e.target) &&
+      e.target !== navbarCart &&
+      !navbarCart.contains(e.target)
+    ) {
+      console.log(e.target);
+      cart.style.display = "none";
+      inventory.style.filter = "blur(0px)";
+    }
+  };
 
   return (
-    <div>
+    <div onClick={hideCart}>
       <nav>
         <ul className="navbar">
           <li>
             <Link to="/">Home Page</Link>
           </li>
-          <li>Shopping Cart{displayTotalCartItems()}</li>
+          <li onClick={showCart} id="navbarCart">
+            Shopping Cart{displayTotalCartItems()}
+          </li>
         </ul>
       </nav>
       <div className="container">
         <div className="inventory">
-          <h1>Welcome to Your Shopping Cart</h1>
+          <h1>Fruits & Veggies</h1>
           <div className="inventoryItems">{displayInventory()}</div>
         </div>
         <div className="cart">
