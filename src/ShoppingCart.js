@@ -77,7 +77,7 @@ let ShoppingCart = () => {
   let displayInventory = () => {
     return items.map((item) => {
       return (
-        <div key={item.name}>
+        <div key={item.name} id={item.name + "Container"}>
           <h1>{item.name}</h1>
           <div className="itemCounter">
             <button onClick={decrement} id={item.name + "Dec"}>

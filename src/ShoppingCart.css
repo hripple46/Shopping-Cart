@@ -2,7 +2,6 @@
 body {
   font-family: "Noto Sans TC", sans-serif;
 }
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -47,6 +46,7 @@ a {
 .itemCounter {
   display: flex;
   justify-content: space-around;
+  box-shadow: red;
 }
 
 .inventoryItems {
@@ -63,4 +63,8 @@ a {
   padding-right: 48px;
   padding-bottom: 36px;
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+#AppleContainer {
+  background-size: contain;
+  background-repeat: no-repeat;
 }
