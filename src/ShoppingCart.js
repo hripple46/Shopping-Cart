@@ -36,6 +36,13 @@ let ShoppingCart = () => {
     setCartItems(newCartItems); //set the state of cartItems to equal the qty that was added
     return displayCart(); //finally, we call the function to update the 'cart' side of page to show the qty that we added
   };
+  let displayTotalCartItems = () => {
+    let totalItems = 0;
+    cartItems.forEach((item) => {
+      totalItems = totalItems + item.qty;
+    });
+    return <div>{totalItems}</div>;
+  };
 
   let displayCart = () => {
     console.log(cartItems);
@@ -116,7 +123,7 @@ let ShoppingCart = () => {
           <li>
             <Link to="/">Home Page</Link>
           </li>
-          <li>Shopping Cart</li>
+          <li>Shopping Cart{displayTotalCartItems()}</li>
         </ul>
       </nav>
       <div className="container">
