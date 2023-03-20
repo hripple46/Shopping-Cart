@@ -119,6 +119,7 @@ let ShoppingCart = () => {
     let cart = document.querySelector(".cart");
     let inventory = document.querySelector(".inventory");
     cart.style.display = "inline-block";
+    cart.classList.add("slideOpen");
     inventory.style.filter = "blur(5px)";
   };
   let hideCart = (e) => {
@@ -133,7 +134,7 @@ let ShoppingCart = () => {
       !navbarCart.contains(e.target)
     ) {
       console.log(e.target);
-      cart.style.display = "none";
+      cart.classList.remove("slideOpen");
       inventory.style.filter = "blur(0px)";
     }
   };
