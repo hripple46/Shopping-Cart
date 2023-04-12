@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ShoppingCart.css";
+import Apple from "./img/Apple.png";
+import Banana from "./img/banana.png";
 let ShoppingCart = () => {
   let [items, setItems] = useState([
-    { name: "Banana", qty: 0 },
-    { name: "Apple", qty: 0 },
+    { name: "Banana", qty: 0, image: Banana },
+    { name: "Apple", qty: 0, image: Apple },
   ]);
   let [cartItems, setCartItems] = useState([
     { name: "Banana", qty: 0 },
@@ -69,7 +71,7 @@ let ShoppingCart = () => {
     return items.map((item) => {
       return (
         <div key={item.name} id={item.name + "Container"}>
-          <h1>{item.name}</h1>
+          <img src={item.image} alt={item.name} />
           <div className="itemCounter">
             <button onClick={decrement} id={item.name + "Dec"}>
               -
@@ -102,7 +104,7 @@ let ShoppingCart = () => {
       let num = parseInt(e.target.value);
 
       if (item.name + "Custom" === e.target.className) {
-        return { name: item.name, qty: num };
+        return { name: item.name, qty: num, image: item.image };
       } else {
         return item;
       }
@@ -112,7 +114,7 @@ let ShoppingCart = () => {
   let checkIfEmpty = () => {
     let newItems = items.map((item) => {
       if (item.qty === "") {
-        return { name: item.name, qty: 0 };
+        return { name: item.name, qty: 0, image: item.image };
       } else {
         return item;
       }
@@ -124,7 +126,7 @@ let ShoppingCart = () => {
     checkIfEmpty();
     let newItems = items.map((item) => {
       if (item.name === e.target.id) {
-        return { name: item.name, qty: (item.qty += 1) };
+        return { name: item.name, qty: (item.qty += 1), image: item.image };
       } else {
         return item;
       }
@@ -135,7 +137,7 @@ let ShoppingCart = () => {
     checkIfEmpty();
     let newItems = items.map((item) => {
       if (item.name + "Dec" === e.target.id && item.qty > 0) {
-        return { name: item.name, qty: item.qty - 1 };
+        return { name: item.name, qty: item.qty - 1, image: item.image };
       } else {
         return item;
       }

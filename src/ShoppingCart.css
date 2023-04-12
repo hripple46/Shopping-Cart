@@ -59,9 +59,9 @@ a {
   justify-content: space-evenly;
 }
 .inventoryItems > div {
-  max-width: 156px;
-  flex: 1;
-  display: inline-block;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
   padding-left: 48px;
   padding-right: 48px;
   padding-bottom: 36px;
@@ -80,4 +80,16 @@ a {
 }
 .slideOpen {
   transform: translateX(-100%);
+}
+#AppleContainer > img {
+  max-height: 144px;
+  width: auto;
+  margin-top: 12px;
+  margin-bottom: 36px;
+}
+#BananaContainer > img {
+  height: 144px;
+  width: auto;
+  margin-top: 12px;
+  margin-bottom: 36px;
 }
