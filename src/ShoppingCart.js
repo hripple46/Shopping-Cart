@@ -11,15 +11,6 @@ let ShoppingCart = () => {
     { name: "Apple", qty: 0 },
   ]);
 
-  //the following useEffect hook is purely for testing
-  useEffect(() => {
-    let newItems = [
-      { name: "Banana", qty: 2 },
-      { name: "Apple", qty: 0 },
-    ];
-    setItems(newItems);
-  }, []);
-
   let addToCart = (e) => {
     let targetId = e.target.id.slice(0, -"AddToCart".length); //targetID allows us to look for the matching element from both state arrays
 
@@ -83,7 +74,13 @@ let ShoppingCart = () => {
             <button onClick={decrement} id={item.name + "Dec"}>
               -
             </button>
-            <h3>{item.qty}</h3>
+            <input
+              className={item.name + "Custom"}
+              type="number"
+              onChange={customIncrement}
+              placeholder="0"
+              value={item.qty}
+            />
             <button onClick={increment} id={item.name}>
               +
             </button>
@@ -95,10 +92,39 @@ let ShoppingCart = () => {
       );
     });
   };
+  let customIncrement = (e) => {
+    console.log(e.target.value);
+    if (e.target.value === "") {
+      e.target.value = 0;
+    }
+
+    let newItems = items.map((item) => {
+      let num = parseInt(e.target.value);
+
+      if (item.name + "Custom" === e.target.className) {
+        return { name: item.name, qty: num };
+      } else {
+        return item;
+      }
+    });
+    setItems(newItems);
+  };
+  let checkIfEmpty = () => {
+    let newItems = items.map((item) => {
+      if (item.qty === "") {
+        return { name: item.name, qty: 0 };
+      } else {
+        return item;
+      }
+    });
+    setItems(newItems);
+  };
+
   let increment = (e) => {
+    checkIfEmpty();
     let newItems = items.map((item) => {
       if (item.name === e.target.id) {
-        return { name: item.name, qty: item.qty + 1 };
+        return { name: item.name, qty: (item.qty += 1) };
       } else {
         return item;
       }
@@ -106,6 +132,7 @@ let ShoppingCart = () => {
     setItems(newItems);
   };
   let decrement = (e) => {
+    checkIfEmpty();
     let newItems = items.map((item) => {
       if (item.name + "Dec" === e.target.id && item.qty > 0) {
         return { name: item.name, qty: item.qty - 1 };
